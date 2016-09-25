@@ -1,26 +1,27 @@
-PATH=/bin:/sbin:/usr/bin:/usr/sbin
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
-EXCLUDE=""
-FILTER=(
+
+exclude=""
+filter=(
 "*.bak"
 ".*"
 "/usr/jails/basejail/data/"
 )
-for i in "${FILTER[@]}" ; do
-EXCLUDE="$EXCLUDE --exclude=$i"
-done
+for i in "${filter[@]}" ; do
+  exclude="$exclude --exclude=$i"
+done 
 
-DATE=$(date +%Y%m%d)
+date=`date +%Y%m%d`
 
-TARGET_DIR1="/usr/jails"
-TARGET_DIR2="/usr/local/etc/ezjail/"
-TARGET_FILE1="/etc/rc.conf /etc/rc.local /etc/fstab /etc/fstab.* /etc/crontab /usr/local/etc/ezjail.conf"
-ZIP_FILE="/tmp/backup_jails_$DATE.tar.bz2"
+targetDir1="/usr/jails"
+targetDir2="/usr/local/etc/ezjail/"
+targetFile="/etc/rc.conf /etc/rc.local /etc/fstab /etc/fstab.* /etc/crontab /usr/local/etc/ezjail.conf"
+zipFile="/tmp/backup_jails_$DATE.tar.bz2"
   
-DATA_DIR="/usr/jails/basejail/data/"
+DataDir="/usr/jails/basejail/data/"
 
-tar -jcf $ZIP_FILE $EXCLUDE -C $TARGET_DIR1 $(ls $TARGET_DIR1) $TARGET_DIR2 $(ls $TARGET_DIR2) $TARGET_FILE1
+tar -jcf $zipFile $EXCLUDE -C $targetDir1 $(ls $targetDir1) $targetDir2 $(ls $targetDir2) $targetFile
 
-cp $ZIP_FILE $DATA_DIR
-ls -al $DATA_DIR
+cp $zipFile $DataDir
+ls -al $DataDir
 exit 0;
