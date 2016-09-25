@@ -16,7 +16,7 @@ date=`date +%Y%m%d`
 targetDir1="/usr/jails"
 targetDir2="/usr/local/etc/ezjail/"
 targetFile="/etc/rc.conf /etc/rc.local /etc/fstab /etc/fstab.* /etc/crontab /usr/local/etc/ezjail.conf"
-zipFile="/tmp/backup_jails_$DATE.tar.bz2"
+zipFile="/tmp/backup_jails_$date.tar.bz2"
   
 DataDir="/usr/jails/basejail/data/"
 
