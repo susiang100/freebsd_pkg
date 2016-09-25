@@ -10,7 +10,7 @@ export PATH
 #done
 #set $filter
 
-exclude="--exclude=.* --exclude=/usr/jails/basejail/data"
+exclude="--exclude=*.log --exclude=*.tmp --exclude=/usr/jails/basejail --exclude=/usr/jails/newjail"
 
 date=`date +%Y%m%d`
 
@@ -20,6 +20,8 @@ zipFile="/tmp/backup_jails_$date.tar.gz"
 
 tar $exclude -zcvpPf $zipFile -C $targetDir $targetFile
 
-cp $zipFile $DataDir
+mv $zipFile /usr/jails/basejail/data/backup-from-server/
+
 ls -al $DataDir
 exit 0;
+
