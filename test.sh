@@ -22,6 +22,6 @@ tar $exclude -zcvpPf $zipFile -C $targetDir $targetFile
 
 mv $zipFile /usr/jails/basejail/data/backup-from-server/
 
-ls -al $DataDir
+ls -alh  /usr/jails/basejail/data/backup-from-server/
 exit 0;
 
